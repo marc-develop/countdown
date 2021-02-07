@@ -3,3 +3,19 @@ body {
     background-color: rgb(56,220, 250);
     overflow: hidden;
 }
+
+
+#canvas
+{
+    
+  height: 100%;
+  width: 100%;
+}
+#gravityBtn
+{
+    z-index: 5;
+  bottom: 10%;
+  left: 10%;
+  position: absolute;
+  width: 10%;
+}

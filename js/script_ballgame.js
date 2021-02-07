@@ -2,6 +2,8 @@ var canvas = document.getElementById("canvas");
 var c = canvas.getContext("2d");
 var tx = window.innerWidth;
 var ty = window.innerHeight;
+var gravity = 1;
+
 canvas.width = tx;
 canvas.height = ty;
 //c.lineWidth= 5;
@@ -9,6 +11,12 @@ canvas.height = ty;
 
 var mousex = 0;
 var mousey = 0;
+
+function invert_gravity(){
+
+gravity = ( gravity = 0 )? 1: 0;
+
+}
 
 addEventListener("mousemove", function(e) {
   mousex = e.clientX;
@@ -42,6 +50,7 @@ function Ball() {
   this.dx = Math.round((Math.random() - 0.5) * 10);
   this.vel = Math.random() /5;
   this.update = function() {
+    
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     c.fillStyle = this.color;
@@ -65,9 +74,11 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, tx, ty);
   for (var i = 0; i < bal.length; i++) {
+    
     bal[i].update();
     bal[i].y += bal[i].dy;
     bal[i].x += bal[i].dx;
+   
     if (bal[i].y + bal[i].radius >= ty) {
       bal[i].dy = -bal[i].dy * grav;
     } else {
@@ -76,6 +87,7 @@ function animate() {
     if(bal[i].x + bal[i].radius > tx || bal[i].x - bal[i].radius < 0){
         bal[i].dx = -bal[i].dx;
     }
+
     if(mousex > bal[i].x - 20 && 
       mousex < bal[i].x + 20 &&
       mousey > bal[i].y -50 &&
