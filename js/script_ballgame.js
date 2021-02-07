@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 var canvas = document.getElementById("canvas");
 var c = canvas.getContext("2d");
 var tx = window.innerWidth;
@@ -12,9 +10,9 @@ canvas.height = ty;
 var mousex = 0;
 var mousey = 0;
 
-addEventListener("mousemove", function() {
-  mousex = event.clientX;
-  mousey = event.clientY;
+addEventListener("mousemove", function(e) {
+  mousex = e.clientX;
+  mousey = e.clientY;
 });
 
 
@@ -99,6 +97,6 @@ function animate() {
 animate();
 
 setInterval(function() {
-  bal.push(new Ball());
-  bal.splice(0, 1);
+  // bal.push(new Ball());
+  // bal.splice(0, 1);
 }, 400);
